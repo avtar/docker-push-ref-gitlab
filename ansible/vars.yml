@@ -13,7 +13,7 @@ github_token: "{{ lookup('env', 'GITHUB_TOKEN') | mandatory }}"
 gitlab_url: "{{ lookup('env','GITLAB_INSTANCE_URL') | default('https://gitlab.com', true) }}"
 
 # The remaining variables do not have to be provided by the user.
-webhook_version: 2.6.0 
+webhook_version: 2.6.4
 
 yum_packages:
   - curl

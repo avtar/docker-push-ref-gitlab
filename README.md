@@ -104,8 +104,8 @@ Visit ``https://gitlab.com/<your-account-name>/<your-test-project-name>/runners`
 
 Visit ``https://github.com/<your-account>/<your-project>/settings/hooks/new`` to create a new webhook. Each project that needs to make use of Gitlab CI will need to have these hooks configured.
 
-The only text field that needs to be populated is the ``Payload URL``. The URL will resemble the following example:
+* The only text field that needs to be populated is the ``Payload URL``. The URL will resemble the following example: ``http://<FQDN>:9000/hooks/sync-gitlab-mirror``
 
-``http://<FQDN>:9000/hooks/sync-gitlab-mirror``
+* The ``Content type`` should be set to ``application/json``.
 
-Additionally ``Just the push event`` option should be selected.
+* ``Just the push event`` should be selected.

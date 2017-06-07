@@ -15,7 +15,7 @@
     "id": "sync-gitlab-mirror",
     "execute-command": "/usr/local/bin/sync-gitlab-mirror.sh",
     "command-working-directory": "/home/gitsync",
-    "pass-environment-to-command": [
+    "pass-arguments-to-command": [
         {"source": "payload", "name": "ref"},
         {"source": "payload", "name": "repository.name"}
     ]

@@ -34,8 +34,8 @@ else
     exit 1
 fi
 
-BUILD_URL="${GITLAB_INSTANCE_URL}"/"${GITLAB_ACCOUNT}"/"${REPOSITORY}"/builds/"${BUILD_ID}"
+BUILD_URL="${GITLAB_HOST}"/"${GITLAB_USER}"/"${REPOSITORY}"/builds/"${BUILD_ID}"
 
 PAYLOAD="{\"state\":\"${GITHUB_STATE}\",\"target_url\":\"${BUILD_URL}\",\"context\":\"${BUILD_STAGE}\"}"
 
-curl -d "$PAYLOAD" -u "${GITHUB_ACCOUNT}":"${GITHUB_TOKEN}" https://api.github.com/repos/${GITHUB_ACCOUNT}/${REPOSITORY}/statuses/${SHA}
+curl --verbose -d "$PAYLOAD" -u "${GITHUB_USER}":"${GITHUB_TOKEN}" https://api.github.com/repos/${GITHUB_USER}/${REPOSITORY}/statuses/${SHA}

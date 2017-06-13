@@ -1,23 +1,83 @@
 [
   {
-    "id":"update-github-status",
-    "execute-command":"/usr/local/bin/update-github-status.sh",
+    "id": "update-github-status",
+    "execute-command": "/usr/local/bin/update-github-status.sh",
     "command-working-directory": "/home/gitsync",
     "pass-arguments-to-command": [
-        {"source": "payload", "name": "build_status"},
-        {"source": "payload", "name": "build_id"},
-        {"source": "payload", "name": "sha"},
-        {"source": "payload", "name": "build_name"},
-        {"source": "payload", "name": "repository.name"}
+      {
+        "source": "payload",
+        "name": "build_status"
+      },
+      {
+        "source": "payload",
+        "name": "build_id"
+      },
+      {
+        "source": "payload",
+        "name": "sha"
+      },
+      {
+        "source": "payload",
+        "name": "build_name"
+      },
+      {
+        "source": "payload",
+        "name": "repository.name"
+      }
     ]
   },
   {
     "id": "sync-gitlab-mirror",
-    "execute-command": "/usr/local/bin/sync-gitlab-mirror.sh",
+    "execute-command": "/usr/local/bin/sync-gitlab-mirror.js",
     "command-working-directory": "/home/gitsync",
-    "pass-environment-to-command": [
-        {"source": "payload", "name": "ref"},
-        {"source": "payload", "name": "repository.name"}
-    ]
+    "pass-parameters-as-json": [
+      {
+        "source": "payload",
+        "name": "payload"
+      }
+    ],
+    "pass-arguments-to-command": [
+      {
+        "source": "entire-payload"
+      }
+    ],
+    "trigger-rule": {
+      "and": [
+        {
+          "match": {
+            "type": "regex",
+            "regex": ".*",
+            "parameter": {
+              "source": "payload",
+              "name": "repository.name"
+            }
+          }
+        },
+        {
+          "or": [
+            {
+              "match": {
+                "type": "regex",
+                "regex": "(opened|synchronize)",
+                "parameter": {
+                  "source": "payload",
+                  "name": "action"
+                }
+              }
+            },
+            {
+              "match": {
+                "type": "regex",
+                "regex": ".*",
+                "parameter": {
+                  "source": "payload",
+                  "name": "ref"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
   }
 ]

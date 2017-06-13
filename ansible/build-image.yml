@@ -26,12 +26,6 @@
       with_flattened:
         - "{{ yum_packages }}"
 
-    - name: Install push-ref-gitlab
-      command: npm install -g https://github.com/avtar/push-ref-gitlab.git
-      args:
-        chdir: /tmp
-        creates: /usr/bin/push-ref-gitlab
-
     - name: Download webhook release tar archive
       get_url:
         url: "https://github.com/adnanh/webhook/releases/download/{{ webhook_version }}/webhook-linux-amd64.tar.gz"
@@ -59,10 +53,10 @@
         dest: /etc/webhook/hooks.json
         mode: 0644 
 
-    - name: Place sync-gitlab-mirror.sh script in /usr/local/bin
+    - name: Place sync-gitlab-mirror.js script in /usr/local/bin
       copy:
-        src: sync-gitlab-mirror.sh
-        dest: /usr/local/bin/sync-gitlab-mirror.sh
+        src: sync-gitlab-mirror.js
+        dest: /usr/local/bin/sync-gitlab-mirror.js
         mode: 0755
 
     - name: Place update-github-status.sh script in /usr/local/bin

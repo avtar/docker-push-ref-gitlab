@@ -37,7 +37,7 @@ A container can be started as long as the prerequisites listed below have been m
 
 ```
 sudo docker run \
---rm -d -p 9000:9000  \
+-d -p 9000:9000 \
 --name push-ref-gitlab \
 -e BUILD_EVENTS_WEBHOOK_URL=http://<FQDN>:9000/hooks/update-github-status \
 -e GITLAB_HOST=https://gitlab.com \

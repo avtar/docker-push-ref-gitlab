@@ -30,7 +30,6 @@
     "id": "sync-gitlab-mirror",
     "execute-command": "/usr/local/bin/sync-gitlab-mirror.js",
     "command-working-directory": "/home/gitsync",
-<<<<<<< HEAD
     "pass-parameters-as-json": [
       {
         "source": "payload",
@@ -80,11 +79,5 @@
         }
       ]
     }
-=======
-    "pass-arguments-to-command": [
-        {"source": "payload", "name": "ref"},
-        {"source": "payload", "name": "repository.name"}
-    ]
->>>>>>> 1a5981ec76864bb9e77208591532960dd36eaadc
   }
 ]

@@ -223,7 +223,7 @@ function getGitlabRemote(name, owner) {
 // Takes git ref arg and pushes to Gitlab remote of repo arg
 function pushRef(name, owner, ref) {
     var dir = getRepoWorkingDirPath(name, owner);
-    return git("pull", [
+    return git("fetch", [
         "origin",
         ref
     ], {
@@ -231,7 +231,7 @@ function pushRef(name, owner, ref) {
         }).then(function () {
             return git("push", [
                 "gitlab",
-                ref,
+                "refs/remotes/origin/" + ref + ":refs/heads/" + ref,
                 "--force"
             ], {
                     cwd: dir

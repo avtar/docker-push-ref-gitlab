@@ -68,7 +68,7 @@
             {
               "match": {
                 "type": "regex",
-                "regex": ".*",
+                "regex": "refs/heads/.*",
                 "parameter": {
                   "source": "payload",
                   "name": "ref"

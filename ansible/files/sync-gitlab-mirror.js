@@ -224,8 +224,7 @@ function getGitlabRemote(name, owner) {
 function pushRef(name, owner, ref) {
     var dir = getRepoWorkingDirPath(name, owner);
     return git("fetch", [
-        "origin",
-        ref
+        "origin"
     ], {
             cwd: dir
         }).then(function () {

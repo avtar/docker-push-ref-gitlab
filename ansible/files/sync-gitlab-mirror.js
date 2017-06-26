@@ -85,7 +85,7 @@ function makeGitlabRequest(path, data) {
         var request = https.request({
             host: parsed.host,
             port: parsed.port || '443',
-            path: "/api/v3/" + path,
+            path: "/api/v4/" + path,
             method: data ? 'POST' : 'GET',
             headers: headers
         }, function (res) {

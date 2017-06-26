@@ -164,7 +164,7 @@ function enableGitlabRunner(projectId) {
 function addGitlabBuildEventsHook(projectFullName, webhookUrl) {
     return makeGitlabRequest('projects/' + projectFullName + '/hooks', {
         url: webhookUrl,
-        build_events: "true",
+        job_events: "true",
         push_events: "false"
     });
 }

@@ -34,7 +34,7 @@ else
     exit 1
 fi
 
-BUILD_URL="${GITLAB_HOST}"/"${GITLAB_REPO_OWNER}"/"${REPOSITORY}"/builds/"${BUILD_ID}"
+BUILD_URL="${GITLAB_HOST}"/"${GITLAB_USER}"/"${REPOSITORY}"/builds/"${BUILD_ID}"
 
 PAYLOAD="{\"state\":\"${GITHUB_STATE}\",\"target_url\":\"${BUILD_URL}\",\"context\":\"${BUILD_STAGE}\"}"
 

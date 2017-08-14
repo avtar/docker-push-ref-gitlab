@@ -198,7 +198,7 @@ function addRemote(name, owner) {
     return git("remote", [
         "add",
         "gitlab",
-        "https://" + GITLAB_USER + ":" + GITLAB_TOKEN + "@" + url.parse(GITLAB_HOST).host + "/" + GITLAB_REPO_OWNER + "/" + GITLAB_REPO + ".git"
+        "https://" + GITLAB_USER + ":" + GITLAB_TOKEN + "@" + url.parse(GITLAB_HOST).host + "/" + GITLAB_USER + "/" + GITLAB_REPO + ".git"
     ], {
             cwd: dir
         });

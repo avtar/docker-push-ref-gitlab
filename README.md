@@ -1,3 +1,5 @@
+**Note:** GitLab now provides [CI/CD support for GitHub repositories](https://about.gitlab.com/features/github/). This project is no longer necessary. 
+
 # About
 
 This repository is the result of exploratory work that was carried out to test GitHub and GitLab CI integration. The original inspiration was [a post on the sealedabstract website](http://faq.sealedabstract.com/gitlab_mirror/) and some of its configuration files and scripts have been adapted for this work.

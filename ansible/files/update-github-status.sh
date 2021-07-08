@@ -21,6 +21,7 @@ BUILD_ID="$2"
 SHA="$3"
 BUILD_STAGE="$4"
 REPOSITORY="$5"
+GITHUB_REPO_OWNER="${GITHUB_REPO_OWNER:-$GITHUB_USER}"
 
 # Determine GitHub state
 if [ "${GITLAB_STATE}" = "created" ] || [ "${GITLAB_STATE}" = "running" ] || [ "${GITLAB_STATE}" = "pending" ]; then
@@ -38,4 +39,4 @@ BUILD_URL="${GITLAB_HOST}"/"${GITLAB_USER}"/"${REPOSITORY}"/builds/"${BUILD_ID}"
 
 PAYLOAD="{\"state\":\"${GITHUB_STATE}\",\"target_url\":\"${BUILD_URL}\",\"context\":\"${BUILD_STAGE}\"}"
 
-curl --verbose -d "$PAYLOAD" -u "${GITHUB_USER}":"${GITHUB_TOKEN}" https://api.github.com/repos/${GITHUB_USER}/${REPOSITORY}/statuses/${SHA}
+curl --verbose -d "$PAYLOAD" -u "${GITHUB_USER}":"${GITHUB_TOKEN}" https://api.github.com/repos/${GITHUB_REPO_OWNER}/${REPOSITORY}/statuses/${SHA}

@@ -50,6 +50,7 @@ if (GITHUB_PULL_REQUEST_AUTHOR) {
 }
 
 var GITHUB_USER = process.env.GITHUB_USER;
+var GITHUB_REPO_OWNER = process.env.GITHUB_REPO_OWNER || GITHUB_USER;
 var GITHUB_REPO = GITHUB_PAYLOAD.repository.name;
 
 var GITLAB_TOKEN = process.env.GITLAB_TOKEN;
@@ -266,7 +267,7 @@ function ensureRepoWorkingDirExists(name, owner) {
             res(true);
         });
     }
-    return cloneRepo(GITHUB_USER, GITHUB_REPO, dir);
+    return cloneRepo(GITHUB_REPO_OWNER, GITHUB_REPO, dir);
 }
 
 function ensureRepoRemoteExists(name, owner) {
@@ -285,7 +286,7 @@ ensureGitlabProjectExists(GITLAB_REPO, GITLAB_USER).then(function (data) {
     return addGitlabBuildEventsHook(GITLAB_USER_AND_REPO, BUILD_EVENTS_WEBHOOK_URL);
 }).then(function (data) {
     console.log("The build events hook was created.");
-    console.log("Cloning the repository: " + GITHUB_USER + "/" + GITHUB_REPO);
+    console.log("Cloning the repository: " + GITHUB_REPO_OWNER + "/" + GITHUB_REPO);
     return ensureRepoWorkingDirExists(GITHUB_REPO, GITHUB_USER);
 }).then(function (data) {
     console.log("The repository exists on the disk.");

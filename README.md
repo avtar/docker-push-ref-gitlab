@@ -25,6 +25,7 @@ In order to use the supplied container the following environment variables will 
 
 * ``BUILD_EVENTS_WEBHOOK_URL`` - This is a URL pointing to where the container is running, for example ``http://<FQDN>:9000/hooks/update-github-status``
 * ``GITHUB_USER`` - The GitHub account associated with the repositories that will be generating the push events
+* ``GITHUB_REPO_OWNER`` - The GitHub owner of the repositories, it can be an organization or the previous user's account.
 * ``GITHUB_TOKEN`` - A GitHub Personal Access Token with the ``repo:status`` scope
 * ``GITLAB_USER`` - The GitLab account where GitHub repositories will be mirrored
 * ``GITLAB_TOKEN`` - A GitLab Personal Access Token
@@ -44,6 +45,7 @@ sudo docker run \
 -e BUILD_EVENTS_WEBHOOK_URL=http://<FQDN>:9000/hooks/update-github-status \
 -e GITLAB_HOST=https://gitlab.com \
 -e GITHUB_USER=<github-account-name> \
+-e GITHUB_REPO_OWNER=<github-repositories-owner> \
 -e GITHUB_TOKEN=<github-token> \
 -e GITLAB_USER=<gitlab-account-name> \
 -e GITLAB_TOKEN=<gitlab-token> \
